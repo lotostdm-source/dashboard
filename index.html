@@ -119,9 +119,9 @@
   .pnl-weekday-labels{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px;}
   .pnl-weekday-labels span{text-align:center;font-size:0.62rem;color:var(--muted);}
   .pnl-week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
-  .pnl-day{border-radius:12px;padding:8px 2px;text-align:center;background:rgba(255,255,255,0.05);border:1px solid var(--card-border);min-width:0;}
-  .pnl-day .num{font-size:0.62rem;color:var(--muted);}
-  .pnl-day .amt{font-size:0.72rem;font-weight:800;margin-top:4px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .pnl-day{border-radius:12px;padding:8px 1px;text-align:center;background:rgba(255,255,255,0.05);border:1px solid var(--card-border);min-width:0;}
+  .pnl-day .num{font-size:0.6rem;color:var(--muted);}
+  .pnl-day .amt{font-size:0.58rem;font-weight:800;margin-top:4px;color:var(--muted);line-height:1.15;word-break:break-word;}
   .pnl-day.pos{background:rgba(51,224,163,0.16);border-color:rgba(51,224,163,0.4);}
   .pnl-day.pos .amt{color:var(--good);}
   .pnl-day.neg{background:rgba(254,44,85,0.16);border-color:rgba(254,44,85,0.4);}
@@ -275,7 +275,7 @@
     </details>
   </section>
 
-  <div style="text-align:center;font-size:0.65rem;color:var(--muted);opacity:0.5;margin-top:-6px;">build v12</div>
+  <div style="text-align:center;font-size:0.65rem;color:var(--muted);opacity:0.5;margin-top:-6px;">build v13</div>
 
 </div>
 
@@ -492,7 +492,7 @@
       num.textContent = d.getDate();
       var amt = document.createElement('div');
       amt.className = 'amt';
-      amt.textContent = (val > 0 ? '+' : '') + Math.round(val) + ' €';
+      amt.textContent = (val > 0 ? '+' : '') + Math.round(val) + '€';
       cell.appendChild(num);
       cell.appendChild(amt);
       week.appendChild(cell);
