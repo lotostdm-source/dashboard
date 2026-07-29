@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ритм</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -275,12 +278,28 @@
     </details>
   </section>
 
-  <div style="text-align:center;font-size:0.65rem;color:var(--muted);opacity:0.5;margin-top:-6px;">build v14</div>
+  <div style="text-align:center;font-size:0.65rem;color:var(--muted);opacity:0.5;margin-top:-6px;" id="buildTag"></div>
 
 </div>
 
 <script>
 (function(){
+  var CURRENT_BUILD = 15;
+  document.getElementById('buildTag').textContent = 'build v' + CURRENT_BUILD;
+
+  function checkForUpdate(){
+    fetch('version.json?_=' + Date.now(), { cache: 'no-store' })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(data && data.build && data.build !== CURRENT_BUILD) location.reload();
+      })
+      .catch(function(){});
+  }
+  checkForUpdate();
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible') checkForUpdate();
+  });
+
   var KEY = 'habitTrackerData';
   var DAY = 86400000;
 
